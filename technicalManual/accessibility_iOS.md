@@ -49,6 +49,7 @@ VoiceOver能够读出屏幕上的无障碍元素所提供的信息，对于UILab
 + __UIAccessibilityContainer 非正式协议：__ 此协议允许UIView的子类作为 分离元素，具有无障碍特性构建部分或者全部对象。当对象包含在视图中，其本身又不是UIView的子类，导致不能被自动地无障碍访问，此时，该协议非常有用。  
 + __UIAccessibilityElement 类：__ 这个类定义了一个能够通过UIAccessibilityContainer协议返回的对象。当一个元素不是自动地支持无障碍访问，可以创建一个IAccessibilityElement实例来展示它， 例如一个非UIView继承对象，或者一个不存在的对象。  
 + __UIAccessibilityConstants.h 头文件：__ 这个头文件定义了某些常量， 这些常量既可以描述一个可展示的无障碍元素的特征，也可以描述应用发布的通知。  
+
 ### UIAccessibility非正式协议
 UIAccessibility非正式协议提供关于应用用户界面的无障碍信息，辅助应用（voiceOver）将其提供的信息传递给残障用户，帮助其使用应用。  
 标准UIKit控件和视图都默认实现了UIAccessibility的方法，所以VoiceOver默认可以访问。不过当视图层级比较复杂的时候默认值可能不太完整，所以我们需要在有必要的时候给应用中无障碍信息缺失的一些视图控件去补充完整，可读的信息。  
@@ -88,6 +89,7 @@ UIAccessibility非正式协议提供关于应用用户界面的无障碍信息�
 + __accessibilityHint：__ 简单描述无障碍元素的执行结果。当accessibilityLabel不能清除的传达结果的时候，accessibilityHint能够帮助用户理解在无障碍元素上操作会发生什么。  
 + __accessibilityValue：__  设置无障碍属性的值。多用于当前无障碍元素的标签是固定的，但值会有多种的情况，例如，一个呈现文本域的无障碍元素有标签“Message”，但该无障碍元素的值是当前文本域中的文本。  
 + __accessibilityTraits：__  标识当前无障碍元素的类型或特征，可以由多种类型组合。  
+
 ```Objective-C
 typedef uint64_t UIAccessibilityTraits NS_TYPED_ENUM;
 
@@ -109,6 +111,7 @@ UIKIT_EXTERN UIAccessibilityTraits UIAccessibilityTraitSearchField;
 // Used when the element should be treated as an image. Can be combined with button or link, for example.
 UIKIT_EXTERN UIAccessibilityTraits UIAccessibilityTraitImage;
 ```  
+
 + __accessibilityElementsHidden：__  标识当前无障碍元素的无障碍属性是否被隐藏，默认值是NO。当我们将一个控件的该属性设置为YES时，可以正常展示但辅助应用VoiceOver无法获取到其焦点。  
 #### 进阶适配
 当我们熟练掌握上面这几种属性的含义并且能灵活运用与不同业务场景的时候，我们已经可以完成绝大多数的无障碍适配工作，能够反馈给视障用户完整清晰简洁的无障碍信息了，但是当业务场景足够复杂的时候，只靠上面这些属性远远做不到完美适配。下面我们看一些进阶的用法。  
@@ -122,6 +125,7 @@ __- (BOOL)accessibilityActivate：__ 当无障碍用户双击选定某个元素�
 __- (BOOL)accessibilityPerformMagicTap：__ 用户触发魔法轻拍（双指双击屏幕）动作时，会执行该函数。一般情况下该方法中实现一个APP最重要的状态转换，比如相机应用中的拍照动作或者音乐APP中可以在该方法中实现音乐的暂停和播放动作。  
 需要注意的是：Magic Tap在你的App中应该只在AppDelegate文件中实现一次，这样才满足Magic Tap的设定和意义。  
 __- (BOOL)accessibilityScroll:(UIAccessibilityScrollDirection)direction：__ 当用户使用三指滑动手势滚动列表时会触发该函数。  
+
 ```Objective-C
 /*
  If the user interface requires a scrolling action (e.g. turning the page of a book), a view in the view 
@@ -140,5 +144,6 @@ typedef NS_ENUM(NSInteger, UIAccessibilityScrollDirection) {
   UIAccessibilityScrollDirectionPrevious API_AVAILABLE(ios(5.0)),
 };
 ```  
+
 ## 总结
 无障碍的适配工作总体来说技术难度较小，只需要实现一些系统接口即可做到。但是我们要知道从做到到做好，之间还需要的一个关键环节，是作为开发人员的社会责任感。我们应当从如何真正使我们的APP便利于视障者的使用的角度出发去思考每一个无障碍bug的适配，努力做到信息准确，简洁易懂，最大程度方便视障用户的使用。
