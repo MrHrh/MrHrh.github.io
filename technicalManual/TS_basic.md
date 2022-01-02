@@ -355,6 +355,7 @@ console.log(person.name);
 
 - 继承类中的构造函数  
 在子类中使用构造函数需要使用super()方法调用父类的构造函数，即便父类没有实现构造函数，子类也需要super()调用，否则会报错。  
+
 ```TypeScript
 class Person {
     public name: string;
