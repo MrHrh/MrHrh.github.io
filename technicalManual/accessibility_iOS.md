@@ -1,4 +1,5 @@
 # 信息无障碍-iOS
+![中国无障碍信息联盟](/images/accessibilitylogo.png)  
 ## 目录
 - [信息无障碍-iOS](#信息无障碍-ios)
   - [目录](#目录)
@@ -21,7 +22,6 @@
         - [UIAccessibilityAction](#uiaccessibilityaction)
   - [总结](#总结)
 
-![中国无障碍信息联盟](/images/accessibilitylogo.png)
 ## 写在前面
 ### 什么是无障碍
 >信息无障碍是指无论健全人还是残疾人、无论年轻人还是老年人都能从信息技术中获益，任何人在任何情况下都能平等地、方便地、无障碍地获取信息、利用信息。
