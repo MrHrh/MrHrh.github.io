@@ -87,6 +87,7 @@ if (month <= 0 || month > 12) {
 
 ### any类型
 当程序中的某些变量在编程阶段还不清楚类型时，比如用户的输入。这种情况下，如果我们不希望类型检查器对这些值进行检查而是直接通过编译阶段的检查，那么我们可以将这些变量的类型设置为any。  
+
 ```TypeScript
 var temp:any = 10
 temp = "hahaha"
@@ -97,6 +98,7 @@ temp = true
 void表示没有任何类型，当我们声明了一个void类型的变量时，我们只能该变量赋予Undefined和null。某种意义上来说void和any是相反的。  
 ### array类型
 TypeScript中声明数组有两种方式，第一种是可以在元素类型后面加上[]，表示由此类型元素组成的一个数组。第二种方式是使用数组泛型，Array<元素类型>的方式声明。  
+
 ```TypeScript
 //元素类型后加[]
 let list: number[] = [1, 2, 3];
@@ -106,6 +108,7 @@ let list: Array<number> = [1, 2, 3];
 
 #### 多类型元素数组定义
 TypeScript中的数组支持多种类型的元素，只需要我们在定义时将类型用()括起来，类型之间用|分割即可：  
+
 ```TypeScript
 const arr: (number | string)[] = [1, "string", 2];
 ```  
@@ -144,6 +147,7 @@ let arr4:Array<boolean> = new Array(true, false, false);
 
 ### tuple类型
 元组类型允许表示一个已知元素数量和类型的数组，元组中各元素的类型不必相同。  
+
 ```TypeScript
 let x: [string, number];
 //正确写法
@@ -156,6 +160,7 @@ x = [10, 'hello'];
 - 类型注解（type annotation） 
  
 其实类型注解在前面的讲解中已经多次使用，当我们声明一个变量时，为该变量指定类型的操作即为类型注解，类型注解告诉编译器我们的变量是什么类型，代码如下：  
+
 ```TypeScript
 let count: number;
 count = 123;
@@ -163,7 +168,8 @@ count = 123;
 
 - 类型推断（type inferrence） 
  
-当我们明白了类型注解的含义后，再学习类型推断就很容易理解了。  
+当我们明白了类型注解的含义后，再学习类型推断就很容易理解了。 
+
 ```TypeScript
 let count = 123;
 ```  
@@ -183,6 +189,7 @@ const total = getTotal(1, 2);
 ## 函数
 ### 普通函数
 正常来说函数的定义需要使用function关键字，函数名，参数列表和返回值来定义一个函数，写法如下：  
+
 ```TypeScript
 function add(n1: number, n2: number): number {
     return n1+n2
@@ -202,6 +209,7 @@ console.log(add(1,4))
 匿名函数的实现是将一个函数表达式赋值给一个变量，通过变量来调用函数。如上面例子中第三段代码所示。  
 ### 箭头函数
 箭头函数（arrow function）是ES6中新增的函数定义的方式，它省去了function关键字，采用=>来定义函数，函数体跟在=>后面的花括号中。我们来看一个具体的例子：  
+
 ```TypeScript
 // 箭头函数
 let fun = (name: string) => {
@@ -237,6 +245,7 @@ let sum = function(num1: number, num2: number) {
 
 ### 函数泛型
 假设现在有这样一个名为join的方法，方法中有两个参数first和second，两个参数的类型都有可能是数字或者字符串。我们实现如下：  
+
 ```TypeScript
 function join(first: string | number, second: string | number) {
   return `${first}${second}`;
@@ -246,6 +255,7 @@ join("jspang", ".com");
 
 这个方法的实现是正确的，但是如果有需求为：first和second两个参数的类型同时只能传一种类型，否则内部计算有可能会出错。这时目前的实现就无法完成了，所以就需要学习函数泛型有关的知识。  
 泛型的定义使用<>来进行，我们只需要在函数名的后面加上<name>并且将参数类型设置为name类型即可，这里name可以是任何一个符合实际语义的词。在正式调用的时候再去指定该泛型对应的具体类型：  
+
 ```TypeScript
 function join<name>(first: name, second: name) {
   return `${first}${second}`;
@@ -258,6 +268,7 @@ join < number > (1, 2);
 - 可选参数
 
 可选参数就是在我们定义形参的时候可以指定该参数非必须，在TypeScript中使用?来标注一个参数为可选参数。  
+
 ```TypeScript
 function buildName(firstName: string, lastName?: string) {
     if (lastName)
@@ -270,6 +281,7 @@ function buildName(firstName: string, lastName?: string) {
 - 默认参数
 
 我们可以给形参指定一个默认的值，当函数调用时如果我们没有传入实参，则函数体内参数的值为默认参数的值。  
+
 ```TypeScript
 function buildName(firstName = "Will", lastName: string) {
     return firstName + " " + lastName;
@@ -279,6 +291,7 @@ function buildName(firstName = "Will", lastName: string) {
 - 剩余参数
 
 上面说的两种参数的共同点是都只能表示一个参数，当我们要同时操作多个参数或者我们并不清楚会有多少参数传递进来时，我们可以使用剩余参数来表示。  
+
 ```TypeScript
 function buildName(firstName: string, ...restOfName: string[]) {
   return firstName + " " + restOfName.join(" ");
@@ -290,6 +303,7 @@ function buildName(firstName: string, ...restOfName: string[]) {
 面向对象编程的基本思想大家可能已经比较熟悉了，这里我们主要说明一下面向对象编程在TypeScript中的实现和具体语法。  
 ### 类的基本实现语法
 假设我们现在有一个Dog的类，它有name，age，kind属性和bark方法，在TypeScript中的实现如下：  
+
 ```TypeScript
 class Dog {
     public name: string;
@@ -307,6 +321,7 @@ wangcai.bark();
 ### 类的继承和重写
 当我们有一个Cat类并且Cat类和Dog拥有共同的属性时，我们就可以将他们共同的属性抽离出来作为他们两个的共同的父类Animal，然后Cat类和Dog去继承Animal类。这样就不用实现两边他们的公共属性了，直接使用从父类中继承而来的即可。  
 在TypeScript中声明类的继承关系的关键字是extends。  
+
 ```TypeScript
 class Animal {
     public name: string;
@@ -341,6 +356,7 @@ wangcai.bark();
 
 ### 类的构造函数
 构造函数在类被初始化的时候会自动执行，我们可以通过构造函数来给类中的成员变量进行赋值。TypeScript中类的构造函数的名称为constructor。  
+
 ```TypeScript
 class Person {
     public name: string;
@@ -372,7 +388,8 @@ class Teacher extends Person {
 ```  
 
 - 定义属性的简化语法  
-在给一个类定义一个属性的时候，除了上面那种普通的写法之外，还可以借助构造函数来实现一种简化的写法，如下代码所示，这种写法等价于定义了一个name，并且在构造函数中进行了赋值。  
+在给一个类定义一个属性的时候，除了上面那种普通的写法之外，还可以借助构造函数来实现一种简化的写法，如下代码所示，这种写法等价于定义了一个name，并且在构造函数中进行了赋值。
+
 ```TypeScript
 class Person {
     constructor(public name:string) {
@@ -385,6 +402,7 @@ console.log(person.name);
 
 ### 类的只读属性
 在TypeScript中我们可以使用readonly关键字将属性设置为只读的，只读属性必须在声明时或构造函数里被初始化，readonly关键字在使用时需要放在访问限定符之后。  
+
 ```TypeScript
 class Person {
     //构造函数中赋值
@@ -401,6 +419,7 @@ class Person {
 模块在其自身的作用域里执行，而不是在全局作用域里，这意味着定义在一个模块里的变量，函数，类等在模块外部是不可见的。  
 当我们想在外部使用模块内的变量，函数或者类时，我们需要明确地使用export关键字导出。同理，如果想要使用其他模块定义的变量，函数等，我们需要使用import关键字导入。  
 - 命名导出  
+
 ```TypeScript
 class ZipCodeValidator implements StringValidator {
     isAcceptable(s: string) {
@@ -414,6 +433,7 @@ export { ZipCodeValidator as mainValidator };
 
 - 默认导出  
 每个模块都可以有并且最多只能有一个默认导出，使用default关键字标记。在导入时，可以使用任意名称导入默认导出。  
+
 ```TypeScript
 class ZipCodeValidator implements StringValidator {
     isAcceptable(s: string) {
@@ -424,6 +444,7 @@ export default ZipCodeValidator;
 ```  
 
 - 导入模块  
+
 ```TypeScript
 //对导入模块进行重命名
 import { ZipCodeValidator as ZCV } from "./ZipCodeValidator";
