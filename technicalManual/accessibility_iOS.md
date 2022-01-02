@@ -1,4 +1,7 @@
+# 信息无障碍-iOS
+## 目录
 - [信息无障碍-iOS](#信息无障碍-ios)
+  - [目录](#目录)
   - [写在前面](#写在前面)
     - [什么是无障碍](#什么是无障碍)
     - [iOS无障碍体验](#ios无障碍体验)
@@ -18,7 +21,6 @@
         - [UIAccessibilityAction](#uiaccessibilityaction)
   - [总结](#总结)
 
-# 信息无障碍-iOS
 ![中国无障碍信息联盟](/images/accessibilitylogo.png)
 ## 写在前面
 ### 什么是无障碍
