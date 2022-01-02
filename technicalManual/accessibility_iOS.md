@@ -113,6 +113,7 @@ UIKIT_EXTERN UIAccessibilityTraits UIAccessibilityTraitImage;
 ```  
 
 + __accessibilityElementsHidden：__  标识当前无障碍元素的无障碍属性是否被隐藏，默认值是NO。当我们将一个控件的该属性设置为YES时，可以正常展示但辅助应用VoiceOver无法获取到其焦点。  
+
 #### 进阶适配
 当我们熟练掌握上面这几种属性的含义并且能灵活运用与不同业务场景的时候，我们已经可以完成绝大多数的无障碍适配工作，能够反馈给视障用户完整清晰简洁的无障碍信息了，但是当业务场景足够复杂的时候，只靠上面这些属性远远做不到完美适配。下面我们看一些进阶的用法。  
 ##### UIAccessibilityNotification
