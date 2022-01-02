@@ -77,7 +77,8 @@ UIAccessibility非正式协议提供关于应用用户界面的无障碍信息�
 @property (nullable, nonatomic, copy) NSString *accessibilityValue;
 @property (nonatomic) UIAccessibilityTraits accessibilityTraits;
 @end
-```
+```  
+
 ### 常用属性
 #### 基础属性
 + __isAccessibilityElement：__ 标识当前组件是否是无障碍组件，UIKit控件中其默认值为YES。通常情况下当其值为YES时才被VoiceOver当做一个无障碍的元素。  
@@ -107,7 +108,7 @@ UIKIT_EXTERN UIAccessibilityTraits UIAccessibilityTraitSearchField;
 
 // Used when the element should be treated as an image. Can be combined with button or link, for example.
 UIKIT_EXTERN UIAccessibilityTraits UIAccessibilityTraitImage;
-```
+```  
 + __accessibilityElementsHidden：__  标识当前无障碍元素的无障碍属性是否被隐藏，默认值是NO。当我们将一个控件的该属性设置为YES时，可以正常展示但辅助应用VoiceOver无法获取到其焦点。  
 #### 进阶适配
 当我们熟练掌握上面这几种属性的含义并且能灵活运用与不同业务场景的时候，我们已经可以完成绝大多数的无障碍适配工作，能够反馈给视障用户完整清晰简洁的无障碍信息了，但是当业务场景足够复杂的时候，只靠上面这些属性远远做不到完美适配。下面我们看一些进阶的用法。  
@@ -138,6 +139,6 @@ typedef NS_ENUM(NSInteger, UIAccessibilityScrollDirection) {
   UIAccessibilityScrollDirectionNext API_AVAILABLE(ios(5.0)),
   UIAccessibilityScrollDirectionPrevious API_AVAILABLE(ios(5.0)),
 };
-```
+```  
 ## 总结
 无障碍的适配工作总体来说技术难度较小，只需要实现一些系统接口即可做到。但是我们要知道从做到到做好，之间还需要的一个关键环节，是作为开发人员的社会责任感。我们应当从如何真正使我们的APP便利于视障者的使用的角度出发去思考每一个无障碍bug的适配，努力做到信息准确，简洁易懂，最大程度方便视障用户的使用。
