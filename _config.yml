@@ -2,8 +2,9 @@ title: The Tiger's personal website
 description: 心随朗月高，志与秋霜洁。
 theme: jekyll-theme-cayman
 
-comments:
-  #gitment
-  comment_gitment_repo: MrHrh.github.io
-  comment_gitment_clientId: faa6d41c90b7064a1279
-  comment_gitment_clientSecret: 0fde80174f101981a0041d1376cb71c966703382
+gitment:
+  enable: true
+  github_user: MrHrh
+  github_repo: github.io #新建一个存储评论的仓库，这里填写仓库名
+  client_id: faa6d41c90b7064a1279 #第一步注册的client_id
+  client_secret: 0fde80174f101981a0041d1376cb71c966703382 #第一步注册的client_secret
