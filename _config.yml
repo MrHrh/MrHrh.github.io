@@ -1,3 +1,9 @@
 title: The Tiger's personal website
 description: 心随朗月高，志与秋霜洁。
 theme: jekyll-theme-cayman
+
+comments:
+  #gitment
+  comment_gitment_repo: https://github.com/MrHrh/MrHrh.github.io
+  comment_gitment_clientId: faa6d41c90b7064a1279
+  comment_gitment_clientSecret: 0fde80174f101981a0041d1376cb71c966703382
