@@ -3158,6 +3158,19 @@
 				z-index: 0;
 			}
 
+	/* DetailDir */
+	#detailDir {
+		background-attachment: scroll,							fixed;
+		background-color: #666;
+		background-image: url("images/overlay.png"), url("../../images/banner.jpg");
+		background-position: top left,						center center;
+		background-repeat: repeat,							repeat;
+		background-size: auto,							cover;
+		color: #fff;
+		padding: 12em 0 20em 0;
+		text-align: center;
+	}
+
 /* Banner */
 
 	#banner {
